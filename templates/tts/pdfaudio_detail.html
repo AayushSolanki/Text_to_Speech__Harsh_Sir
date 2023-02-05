@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+PDF To Audio Details
+{% endblock title %}
+
+{% block head %}
+
+<style>
+  textarea {
+    overflow-y: scroll !important;
+    height: 100px;
+    resize: vertical
+  }
+</style>
+
+{% endblock head %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+{% with text=object.text %}
+  <div class="row">
+    <div class="col-2">
+      <div class="form-control ">
+        <label for="exampleFormControlSelect1"> Select Voice</label>
+        <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+          <option>Male Professor</option>
+          <option>Female Professor</option>
+          <option>Boy</option>
+          <option>Girl</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="md-form mb-3">
+
+        <textarea id="form7" class="md-textarea form-control" rows="10">{{  text  }}</textarea>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary">Convert</button>
+
+        
+        <!-- <audio src="{{ object.audio_file.url }}" controls="controls"></audio> -->
+      </div>
+    </div>
+
+
+    {% endwith %}
+
+  </div>
+</div>
+
+{% endblock content %}
