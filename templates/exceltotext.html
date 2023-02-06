@@ -11,6 +11,8 @@
 
 {% block content %}
 
+
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -18,12 +20,12 @@
         {% csrf_token %}
         {{ form.errors }}
         
- <input name="excel" type="file" class="custom-file-input" id="excel"
- accept=".xlsx, .xls, .csv">
+ <input name="excel" type="file" class="custom-file-input bg-primary fw-bold text-white" id="excel"
+ accept=".xlsx,.xls,.csv">
 
    
         <div class="mt-3">
-          <button type="submit" class="btn btn-success">read</button>
+          <button type="submit" class="btn btn-primary fw-bold text-white">Read</button>
         </div>
       </div>
       </form>

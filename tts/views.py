@@ -3,7 +3,6 @@ from django.shortcuts import render
 from tts.models import audio, podcast_files,excel_files
 from .utils import  convert_text_to_audio, merge_audio_file
 import PyPDF2
-import pandas as pd
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,6 +22,10 @@ def merge_dailogs(request):
 
      podcasts = podcast_files.objects.all()
      return render(request,"display_result.html",{'podcasts':podcasts})
+    
+   else:
+      podcasts = podcast_files.objects.all()
+      return render(request,"display_result.html",{'podcasts':podcasts})
 
 def merge_files(request):
    if request.method == "POST":
