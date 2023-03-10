@@ -70,11 +70,16 @@ def readexcelfile(request):
      dataframe1 = dataframe.active
      excel_data = list()
 
+    #  excel_data.append("<speak>")
+
      for row in dataframe1.iter_rows():
         row_data=list()
         for cell in row:
             row_data.append(str(cell.value))
         excel_data.append(row_data)
+    #  excel_data.append("</speak>")
+     print(row_data)
+      
 
     #  for row in range(0, dataframe1.max_row):
     #  for col in dataframe1.iter_cols(1, dataframe1.max_column):
@@ -87,7 +92,7 @@ def readexcelfile(request):
     #   cell_obj = dataframe1.cell(row = i, column = 1)
     #   print(cell_obj.value)
 
-     print("excel--",type(excel_data))
+    #  print("excel-->>>>",excel_data)
 
    return render(request,"exceltotextdetail.html",{'excel_data':excel_data})
 
