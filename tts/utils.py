@@ -98,6 +98,13 @@ def merge_mp3(audio_clip_paths, name):
     podcast.save()
     for clip in audio_clip_paths:
         os.remove(clip)
+    pt="media\excel"
+    import shutil
+    shutil.rmtree(pt)
+    # filepath = os.path.join(settings.BASE_DIR, f'media/excel/{name}')
+
+    # os.remove(pt)
+    
 
 
 def merge_audio_file(audio_clip_paths, name):
@@ -118,6 +125,7 @@ def merge_audio_file(audio_clip_paths, name):
     podcast.save()
     for clip in audio_clip_paths:
         os.remove(clip)
+    
 
 
 def aws_generate_clips_taskId(speaker, script, filename):
@@ -146,6 +154,8 @@ def aws_generate_clips_taskId(speaker, script, filename):
         # newstring =  script1.replace("'","&apos;")
         # newstring =  script1.replace("<","&lt;")
         # newstring =  script1.replace(">","&gt;")
+
+
         print(newstring)
         speaker1 = speaker[x]
         request_parameters = '{'
