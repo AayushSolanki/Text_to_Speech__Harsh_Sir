@@ -5,17 +5,13 @@ import pyttsx3
 import wave
 from uuid import uuid4
 from tts.models import podcast_files
-import json
 import sys
 import os
-import base64
 import datetime
 import hashlib
 import hmac
 import urllib.request
 import requests
-from contextlib import closing
-from tempfile import gettempdir
 from moviepy.editor import concatenate_audioclips, AudioFileClip
 
 
@@ -43,8 +39,8 @@ def convert_pdf_to_audio(instance):
 def convert_text_to_audio(speaker, script, name):
 
     # text = extract_text(instance.pdf.path)
-    import os
-    filepath = os.path.join(settings.BASE_DIR, f'media/recs/{name}.wav')
+    # import os
+    # filepath = os.path.join(settings.BASE_DIR, f'media/recs/{name}.wav')
     aws_generate_clips_taskId(speaker, script, name)
     # store_audio_file(speaker,filepath, script,name)
 
@@ -98,15 +94,14 @@ def merge_mp3(audio_clip_paths, name):
     podcast.save()
     for clip in audio_clip_paths:
         os.remove(clip)
-    pt="media\excel"
-    import shutil
-    shutil.rmtree(pt)
-    # filepath = os.path.join(settings.BASE_DIR, f'media/excel/{name}')
-
-    # os.remove(pt)
     
-
-
+    pt="media\excel\\"
+    for files_name in os.listdir(pt):
+        file =pt+files_name
+        if os.path.exists(file):
+            print("Deleting file")
+            os.remove(file)
+    
 def merge_audio_file(audio_clip_paths, name):
     data = []
     for clip in audio_clip_paths:

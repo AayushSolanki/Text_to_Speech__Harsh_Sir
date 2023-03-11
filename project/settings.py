@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1nt#p=1e595j%3et*=v%n05iaijee&!lqb3b-dr2&h=qf)73*8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','107.21.86.183']
+ALLOWED_HOSTS = ['localhost', '*','127.0.0.1','107.21.86.183']
 
 
 # Application definition
@@ -36,9 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    
+    'django.contrib.staticfiles',   
     'tts',
     
     ]
@@ -132,7 +130,10 @@ STATICFILES_DIRS = [
     BASE_DIR / 'staticfiles'
 ]
 
-STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_ROOT = BASE_DIR / 'static'
+import os
+STATIC_ROOT =  os.path.join(BASE_DIR, 'static/')
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
