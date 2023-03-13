@@ -1,4 +1,5 @@
 import datetime
+from pathlib import Path
 from django.conf import settings
 import PyPDF2
 import pyttsx3
@@ -14,6 +15,7 @@ import urllib.request
 import requests
 from moviepy.editor import concatenate_audioclips, AudioFileClip
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def extract_text(filename):
     pdfFileObj = open(filename, "rb")
@@ -114,8 +116,14 @@ def merge_audio_file(audio_clip_paths, name):
     podcast = podcast_files(
         file_name=name, date_time=datetime.date, audio_file=output_path)
     podcast.save()
-    for clip in audio_clip_paths:
-        os.remove(clip)
+    # for clip in audio_clip_paths:
+    #     os.remove(clip)
+    pt=os.path.join(BASE_DIR, 'media/',"clips//")
+    for files_name in os.listdir(pt):
+        file =pt+files_name
+        if os.path.exists(file):
+            print("Deleting file")
+            os.remove(file)
     
 
 
