@@ -39,8 +39,6 @@ def convert_pdf_to_audio(instance):
 
 
 def convert_text_to_audio(speaker, script, name):
-    
- 
     aws_generate_clips_taskId(speaker, script, name)
 
 
@@ -84,18 +82,19 @@ def store_audio_file(speaker, filepath, script, filename):
 
 
 def merge_mp3(audio_clip_paths, name):
-    import os
-    # output_path = os.path.join(BASE_DIR, f'media/podcast/{name}.mp3')
-    output_path = f'podcast/{name}.mp3'
+    output_path = os.path.join(BASE_DIR, f'media/podcast/{name}.mp3')
+    # output_path = f'podcast/{name}.mp3'
     clips = [AudioFileClip(c) for c in audio_clip_paths]
     final_clip = concatenate_audioclips(clips)
     final_clip.write_audiofile(output_path)
+    output_path = f'podcast/{name}.mp3'
+
     podcast = podcast_files(
         file_name=name, date_time=datetime.date, audio_file=output_path)
     podcast.save()
     for clip in audio_clip_paths:
+        print("deleting clips")
         os.remove(clip)
-    
 
     
 def merge_audio_file(audio_clip_paths, name):
@@ -231,7 +230,7 @@ def aws_generate_clips_taskId(speaker, script, filename):
         url = response.json()['SynthesisTask']['TaskId']
         # print(url)
         clips_url.append(url)
-    print(clips_url)
+    # print(clips_url)
     import time
     time.sleep(15)
     download(clips_url, filename)
