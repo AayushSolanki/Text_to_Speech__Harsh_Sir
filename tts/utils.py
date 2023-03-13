@@ -360,6 +360,7 @@ def download(clips_url, filename):
         # print(url)
         filepath = os.path.join(BASE_DIR, f'media/clips/{x}.mp3')
         urllib.request.urlretrieve(url, filepath)
+        print("downloading clip")
         clips.append(filepath)
 
     merge_mp3(clips, filename)
