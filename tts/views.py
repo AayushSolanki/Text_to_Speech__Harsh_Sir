@@ -78,7 +78,15 @@ def readexcelfile(request):
             row_data.append(str(cell.value))
         excel_data.append(row_data)
     #  excel_data.append("</speak>")
-     print(row_data)
+    #  print(row_data)
+
+     import os
+     pt="media\excel\\"
+     for files_name in os.listdir(pt):
+        file =pt+files_name
+        if os.path.exists(file):
+            print("Deleting file")
+            os.remove(file)
       
 
     #  for row in range(0, dataframe1.max_row):

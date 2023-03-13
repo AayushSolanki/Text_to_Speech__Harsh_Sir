@@ -37,7 +37,7 @@ def convert_pdf_to_audio(instance):
 
 
 def convert_text_to_audio(speaker, script, name):
-
+    
     # text = extract_text(instance.pdf.path)
     # import os
     # filepath = os.path.join(settings.BASE_DIR, f'media/recs/{name}.wav')
@@ -51,6 +51,7 @@ def save_excel(name):
     # name.split("_").join(" ")
     filepath = os.path.join(settings.BASE_DIR, f'media/excel/{name}')
     return filepath
+    
 
 
 def store_audio_file(speaker, filepath, script, filename):
@@ -95,12 +96,7 @@ def merge_mp3(audio_clip_paths, name):
     for clip in audio_clip_paths:
         os.remove(clip)
     
-    pt="media\excel\\"
-    for files_name in os.listdir(pt):
-        file =pt+files_name
-        if os.path.exists(file):
-            print("Deleting file")
-            os.remove(file)
+
     
 def merge_audio_file(audio_clip_paths, name):
     data = []
