@@ -358,7 +358,7 @@ def download(clips_url, filename):
         ext = '.mp3'
         url = 'https://myvoicebucket123.s3.amazonaws.com/'+x+ext
         # print(url)
-        filepath = os.path.join(settings.BASE_DIR, f'media/clips/{x}.mp3')
+        filepath = os.path.join(BASE_DIR, f'media/clips/{x}.mp3')
         urllib.request.urlretrieve(url, filepath)
         clips.append(filepath)
 
