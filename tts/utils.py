@@ -88,7 +88,7 @@ def store_audio_file(speaker, filepath, script, filename):
 
 def merge_mp3(audio_clip_paths, name):
     import os
-    output_path = os.path.join(settings.BASE_DIR, f'media/podcast/{name}.mp3')
+    output_path = os.path.join(BASE_DIR, f'media/podcast/{name}.mp3')
     clips = [AudioFileClip(c) for c in audio_clip_paths]
     final_clip = concatenate_audioclips(clips)
     final_clip.write_audiofile(output_path)
