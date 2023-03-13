@@ -82,7 +82,7 @@ def readexcelfile(request):
 
      import os
     #  pt="media\excel\\"
-     pt=os.path.join(BASE_DIR, 'media/',"excel\\")
+     pt=os.path.join(BASE_DIR, 'media/',"excel//")
      print(pt)     
      for files_name in os.listdir(pt):
         file =pt+files_name
@@ -90,7 +90,6 @@ def readexcelfile(request):
             print("Deleting file")
             os.remove(file)
       
-
     #  for row in range(0, dataframe1.max_row):
     #  for col in dataframe1.iter_cols(1, dataframe1.max_column):
     #     print(col)
