@@ -132,7 +132,7 @@ STATICFILES_DIRS = [
 
 # STATIC_ROOT = BASE_DIR / 'static'
 import os
-STATIC_ROOT =  os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT =  os.path.join(BASE_DIR,'tts', 'static/')
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
