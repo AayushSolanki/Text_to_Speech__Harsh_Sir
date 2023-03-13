@@ -82,6 +82,7 @@ def readexcelfile(request):
 
      import os
      pt="media\excel\\"
+     path=BASE_DIR,'\pt'
      for files_name in os.listdir(pt):
         file =pt+files_name
         if os.path.exists(file):
