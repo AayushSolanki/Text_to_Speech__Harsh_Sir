@@ -10,7 +10,7 @@ class audio(models.Model):
         return self.file_name
     
 class podcast_files(models.Model):
-    file_name= models.CharField(max_length=40)
+    file_name= models.CharField(max_length=60)
     date_time =models.DateTimeField(auto_now_add=True)
     audio_file = models.FileField(upload_to='podcast',
         blank=True, null=True)

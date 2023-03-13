@@ -89,19 +89,7 @@ def readexcelfile(request):
         if os.path.exists(file):
             print("Deleting file")
             os.remove(file)
-      
-    #  for row in range(0, dataframe1.max_row):
-    #  for col in dataframe1.iter_cols(1, dataframe1.max_column):
-    #     print(col)
-        # print(col[row].value)
-
-    #  m_row = dataframe1.max_row
-    #  m_col = dataframe1.max_column
-    #  for i in range(1, m_row + 1):
-    #   cell_obj = dataframe1.cell(row = i, column = 1)
-    #   print(cell_obj.value)
-
-    #  print("excel-->>>>",excel_data)
+    
 
    return render(request,"exceltotextdetail.html",{'excel_data':excel_data})
 

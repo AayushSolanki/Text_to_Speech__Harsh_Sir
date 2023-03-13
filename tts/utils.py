@@ -40,11 +40,8 @@ def convert_pdf_to_audio(instance):
 
 def convert_text_to_audio(speaker, script, name):
     
-    # text = extract_text(instance.pdf.path)
-    # import os
-    # filepath = os.path.join(settings.BASE_DIR, f'media/recs/{name}.wav')
+ 
     aws_generate_clips_taskId(speaker, script, name)
-    # store_audio_file(speaker,filepath, script,name)
 
 
 def save_excel(name):
