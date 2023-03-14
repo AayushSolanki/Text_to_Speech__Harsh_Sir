@@ -145,8 +145,9 @@ def aws_generate_clips_taskId(speaker, script, filename):
         script1 += script[x]
         script1 += "</speak>"
       
-        newstring = script1.replace("'","&apos;").replace(".","<break time='1s'/>").replace("?","<break time='1s'/>").replace(",","<break time='0.35s'/>").strip()
-        # newstring.strip()
+        newstring = script1.replace("'","&apos;").replace(".","<break time='1s'/>").replace("?","<break time='1s'/>").replace(",","<break time='0.35s'/>").replace('\r', '').replace('\n', '')
+        newstring.strip()
+        
         # newstring =  script1.replace("?","<break time='1s'/>")
         # newstring =  script1.replace('"',"&quot;")
         # newstring =  script1.replace("&","&amp;")
