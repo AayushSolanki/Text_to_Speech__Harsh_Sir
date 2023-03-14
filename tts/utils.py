@@ -127,6 +127,7 @@ def merge_audio_file(audio_clip_paths, name):
 def aws_generate_clips_taskId(speaker, script, filename):
     clips_url = []
     for x in range(len(script)):
+        print("in lopp------------------>")
         access_key = 'AKIA6N53FKRFDPJHRRTN'
         secret_key = '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'
         if access_key is None or secret_key is None:
@@ -143,17 +144,20 @@ def aws_generate_clips_taskId(speaker, script, filename):
         script1 ="<speak>"
         script1 += script[x]
         script1 += "</speak>"
-        newstring = script1.replace(".","<break time='1s'/>").replace("?","<break time='1s'/>")
+      
+        newstring = script1.replace("'","&apos;").replace(".","<break time='1s'/>").replace("?","<break time='1s'/>").replace(",","<break time='0.35s'/>").strip()
+        # newstring.strip()
         # newstring =  script1.replace("?","<break time='1s'/>")
         # newstring =  script1.replace('"',"&quot;")
         # newstring =  script1.replace("&","&amp;")
-        # newstring =  script1.replace("'","&apos;")
+        # newstring =  script1
         # newstring =  script1.replace("<","&lt;")
         # newstring =  script1.replace(">","&gt;")
 
 
         print(newstring)
         speaker1 = speaker[x]
+        print(speaker1)
         request_parameters = '{'
         request_parameters += '"Engine": "neural",'
         request_parameters += '"OutputFormat": "mp3",'
@@ -232,7 +236,7 @@ def aws_generate_clips_taskId(speaker, script, filename):
         clips_url.append(url)
     # print(clips_url)
     import time
-    time.sleep(15)
+    time.sleep(25)
     download(clips_url, filename)
 #  aws_generate_clips_download(clips_url,filename)
 

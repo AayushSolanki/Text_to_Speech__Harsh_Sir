@@ -65,12 +65,13 @@ def readexcelfile(request):
      excels.save()
     #  rd=pd.read_excel(f'media/excel/{file}')
     #  print(rd)
-     import openpyxl
+     import openpyxl 
+     from openpyxl import Workbook
+     from openpyxl.styles import Alignment
      dataframe = openpyxl.load_workbook(f'media/excel/{file}')
+     
      dataframe1 = dataframe.active
      excel_data = list()
-
-    #  excel_data.append("<speak>")
 
      for row in dataframe1.iter_rows():
         row_data=list()
@@ -103,7 +104,6 @@ def convert(request):
      name  = request.POST.get('filename')
      text = request.POST.get('script')
      path= convert_text_to_audio(text,name)
-
      Audio= audio(file_name=name,date_time= datetime.date ,audio_file=path)
     #  Audio= audio(file_name=name)
      Audio.save()
